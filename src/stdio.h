@@ -5,5 +5,6 @@
 
 void terminal_initialize();
 void printd(const char* str);
+void clear();
 
 #endif

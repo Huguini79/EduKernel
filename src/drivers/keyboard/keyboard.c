@@ -19,6 +19,13 @@
 // Define the string library
 #include "kernel/string/string.h"
 
+// Define the shutdown driver
+#include "drivers/shutdown/shutdown.h"
+
+// Define all programs header files
+#include "programs/helloworld/helloworld.h"
+#include "programs/engine/2d/player.h"
+
 // Define the buffer variable
 char buffer[512];
 
@@ -289,14 +296,14 @@ void initialize_keyboard() {
    				 }
 
     				if (strncmp(buffer, "help", 4) == 0) {
-        				limpiar_pantalla();
+        				clear();
 					printd("=========================================================================");
 					printd("===========================================Help========================================================================================================================\n\n");
-					printd("\nCommands:\n1) clear - Clear the screen\n2) help - shows all the commands - \n3) surprise - There is a surprise :)\n4) credits - Credits of the development of this operating system");
+					printd("\nCommands:\n1) clear - Clear the screen\n2) help - shows all the commands - \n3) surprise - There is a surprise :)\n4) credits - Credits of the development of this operating system\n5) hello - Hello World program\n6) exit - Shutdown the system\n7) shutdown - Shutdown the system\n8) playermove - An example of the movement of the player with the 2d game engine");
 					printd("\n\nEduKernel$ ");
    				 }
 				else if(strncmp(buffer, "surprise", 8) == 0) {
-					limpiar_pantalla();
+					clear();
 					printd("WELCOME TO EDUKERNEL, BY HUGUINI79\n\n");
 					for(int i = 0; i < 56; i++) {
 						printd("=EduKernel");
@@ -304,14 +311,30 @@ void initialize_keyboard() {
 					printd("\nEduKernel$ ");
 				}
 				else if(strncmp(buffer, "credits", 7) == 0) {
-					limpiar_pantalla();
+					clear();
 					printd("Developer: Huguini79\n");
 					printd("Development time: 6 hours");
 					printd("\n\nEduKernel$ ");
 				}
 				else if(strncmp(buffer, "clear", 5) == 0) {
-					limpiar_pantalla();
+					clear();
 					printd("EduKernel$ ");
+				}
+				else if(strncmp(buffer, "hello", 5) == 0) {
+					hello();
+				}
+				else if(strncmp(buffer, "exit", 4) == 0) {
+					shutdown();
+				}
+				else if(strncmp(buffer, "shutdown", 8) == 0) {
+					shutdown();
+				}
+				else if(strncmp(buffer, "playermove", 10) == 0) {
+					clear();
+					player_move(0, 0);
+					player_move(10, 10);
+					player_move(5, 5);
+					printd("\n\n\n\nEduKernel$ ");
 				}
     				else if (buffer[0] == '\0') {
         				printd("\nEduKernel$ ");

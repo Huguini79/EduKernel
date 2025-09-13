@@ -66,7 +66,7 @@ void printd(const char* str) {
 }
 
 
-void limpiar_pantalla() {
+void clear() {
     for (int y = 0; y < VGA_HEIGHT; y++) {
         for (int x = 0; x < VGA_WIDTH; x++) {
             terminal_putchar(x, y, ' ', 0);
